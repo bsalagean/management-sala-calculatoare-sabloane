@@ -6,9 +6,9 @@ namespace ProiectSabloane.Factory
 {
     class LaptopFactory : IComputerFactory
     {
-        public override Laptop GetComputer(string brand, int price)
+        public override Computer GetComputer(string brand, int price)
         {
-            return new Laptop(price, brand, Id++);
+            return new Laptop(Id++, price, brand);
         }
     }
 }

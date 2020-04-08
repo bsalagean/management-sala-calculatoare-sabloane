@@ -6,7 +6,7 @@ namespace ProiectSabloane.Factory
 {
     class Desktop : Computer
     {
-        public Desktop(int price, string brand, int id) : base(price, brand, id)
+        public Desktop(int id, int price, string brand) : base(id, price, brand)
         {
         }
 

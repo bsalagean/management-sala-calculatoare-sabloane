@@ -8,12 +8,12 @@ namespace ProiectSabloane.Factory.AbstractComputerFactory
     {
         public override Computer GetDesktop(int price)
         {
-            return new Desktop(price, "Asus", Id++);
+            return new Desktop(Id++, price, "Asus");
         }
 
         public override Computer GetLaptop(int price)
         {
-            return new Laptop(price, "Asus", Id++);
+            return new Laptop(Id++, price, "Asus");
         }
     }
 }

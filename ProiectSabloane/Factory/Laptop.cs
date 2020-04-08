@@ -6,7 +6,7 @@ namespace ProiectSabloane.Factory
 {
     class Laptop : Computer
     {
-        public Laptop(int price, string brand, int id) : base(price, brand, id)
+        public Laptop(int id, int price, string brand) : base(id, price, brand)
         {
         }
 

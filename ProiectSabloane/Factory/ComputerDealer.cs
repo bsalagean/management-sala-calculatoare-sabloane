@@ -7,7 +7,7 @@ namespace ProiectSabloane.Factory
     public class ComputerDealer
     {
 
-        public CarDealer()
+        public ComputerDealer()
         {
             OrderedComputers = new Dictionary<int, Computer>();
         }
@@ -45,7 +45,7 @@ namespace ProiectSabloane.Factory
         {
             foreach (var computer in OrderedComputers)
             {
-                Console.WriteLine("Stock From Order:" + computer.Value.ID + " " + computer.Value.Brand + " "  + computer.Value.Price + " " + computer.Value.Type.ToString());
+                Console.WriteLine("Stock From Order:" + computer.Value.Id + " " + computer.Value.Brand + " "  + computer.Value.Price + " " + computer.Value.Type.ToString());
             }
         }
 

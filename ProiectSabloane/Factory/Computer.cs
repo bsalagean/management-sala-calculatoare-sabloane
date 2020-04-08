@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProiectSabloane.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,9 +9,9 @@ namespace ProiectSabloane.Factory
     {
         public Computer(int id, int price, string brand)
         {
-            this.Brand = brand;
             this.Id = id;
             this.Price = price;
+            this.Brand = brand;
         }
 
         public int Id { get; set; }
@@ -19,6 +20,16 @@ namespace ProiectSabloane.Factory
 
         public string Brand { get; set; }
 
+        public EUsedFor UsedFor { get; set; }
+
+        public string Description { get; set; }
+
+        public List<EPeripherals> Peripherals { get; set; }
+
         public abstract EComputerType Type { get; }
+
+        public EComputerType ComputerType { get; set; }
+
+        public bool Availability { get; set; }
     }
 }

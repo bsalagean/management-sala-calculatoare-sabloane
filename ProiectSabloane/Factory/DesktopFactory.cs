@@ -8,7 +8,7 @@ namespace ProiectSabloane.Factory
     {
         public override Computer GetComputer(string brand, int price)
         {
-            return new Desktop(price, brand, Id++);
+            return new Desktop(Id++, price, brand);
         }
     }
 }
