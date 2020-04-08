@@ -6,7 +6,10 @@ namespace ProiectSabloane
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //var computerDealer = new Factory.ComputerDealer();
+            //computerDealer.OrderComputer(6700, "Asus");
+            //computerDealer.StockComputer();
+            Console.WriteLine("muie");
         }
     }
 }
