@@ -14,25 +14,25 @@ namespace ProiectSabloane.Factory
 
         public Dictionary<int, Computer> OrderedComputers { get; set; }
 
-        public int OrderComputer(int price, int computerBrand)
+        public int OrderComputer(int computerBrand)
         {
             switch (computerBrand)
             {
                 case 1:
-                    OrderedComputers.Add(AbstractComputerFactory.AsusComputerFactory.Id, new AbstractComputerFactory.AsusComputerFactory().GetDesktop(price));
-                    Console.WriteLine($"Computer was ordered : {price} => ID {DesktopFactory.Id} => AsusComputerFactory Desktop");
+                    OrderedComputers.Add(AbstractComputerFactory.AsusComputerFactory.Id, new AbstractComputerFactory.AsusComputerFactory().GetDesktop(1000));
+                    Console.WriteLine($"Computer was ordered : {1000} => ID {DesktopFactory.Id} => AsusComputerFactory Desktop");
                     return AbstractComputerFactory.AsusComputerFactory.Id;
                 case 2:
-                    OrderedComputers.Add(AbstractComputerFactory.HPComputerFactory.Id, new AbstractComputerFactory.HPComputerFactory().GetLaptop(price));
-                    Console.WriteLine($"Computer was ordered : {price} => ID {LaptopFactory.Id} => HPComputerFactory Laptop");
+                    OrderedComputers.Add(AbstractComputerFactory.HPComputerFactory.Id, new AbstractComputerFactory.HPComputerFactory().GetLaptop(1000));
+                    Console.WriteLine($"Computer was ordered : {1000} => ID {LaptopFactory.Id} => HPComputerFactory Laptop");
                     return AbstractComputerFactory.HPComputerFactory.Id;
                 case 3:
-                    OrderedComputers.Add(AbstractComputerFactory.LenovoComputerFactory.Id, new AbstractComputerFactory.LenovoComputerFactory().GetDesktop(price));
-                    Console.WriteLine($"Computer was ordered : {price} => ID {DesktopFactory.Id} => AsusComputerFactory Desktop");
+                    OrderedComputers.Add(AbstractComputerFactory.LenovoComputerFactory.Id, new AbstractComputerFactory.LenovoComputerFactory().GetDesktop(1000));
+                    Console.WriteLine($"Computer was ordered : {1000} => ID {DesktopFactory.Id} => LenovoComputerFactory Desktop");
                     return AbstractComputerFactory.LenovoComputerFactory.Id;
                 case 4:
-                    OrderedComputers.Add(AbstractComputerFactory.MacComputerFactory.Id, new AbstractComputerFactory.MacComputerFactory().GetLaptop(price));
-                    Console.WriteLine($"Computer was ordered : {price} => ID {DesktopFactory.Id} => MacComputerFactory Laptop");
+                    OrderedComputers.Add(AbstractComputerFactory.MacComputerFactory.Id, new AbstractComputerFactory.MacComputerFactory().GetLaptop(1000));
+                    Console.WriteLine($"Computer was ordered : {1000} => ID {DesktopFactory.Id} => MacComputerFactory Laptop");
                     return AbstractComputerFactory.MacComputerFactory.Id;
                 default:
                     return -1;

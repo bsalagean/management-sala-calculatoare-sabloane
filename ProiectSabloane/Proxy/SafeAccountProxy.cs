@@ -13,23 +13,28 @@ namespace ProiectSabloane.Proxy
 
         public AccountProtected RealSubject { get; set; }
 
+        public bool isActivated { get; set; }
+
         public SafeAccountProxy()
         {
-            this.Username = "user";
-            this.Password = "0000";
+            this.Username = "admin";
+            this.Password = "admin";
+            isActivated = false;
         }
 
-        public bool Activate(string username, string pass)
+        public bool Activate(string newPass)
         {
-            if (this.Username == username && this.Password == pass)
+            if (Password != newPass) 
             {
+                Password = newPass;
                 this.RealSubject = new AccountProtected();
                 Console.WriteLine("Activated");
+                isActivated = true;
                 return true;
             }
             else
             {
-                Console.WriteLine("Inactive account");
+                Console.WriteLine("Cannot use the same password as before ");
                 return false;
             }
         }
@@ -42,10 +47,10 @@ namespace ProiectSabloane.Proxy
                 Console.WriteLine("Inactive");
         }
 
-        public void OrderComputer(int price, int type)
+        public void OrderComputer(int type)
         {
             if (this.RealSubject != null)
-                RealSubject.OrderComputer(price, type);
+                RealSubject.OrderComputer(type);
             else
                 Console.WriteLine("Inactive");
         }

@@ -8,6 +8,6 @@ namespace ProiectSabloane.Proxy
     {
         void DisplayStock();
 
-        void OrderComputer(int price, int type);
+        void OrderComputer(int type);
     }
 }

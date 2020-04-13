@@ -14,9 +14,9 @@ namespace ProiectSabloane.Proxy
             computerDealer.StockComputer();
         }
 
-        public void OrderComputer(int price, int type)
+        public void OrderComputer(int type)
         {
-            computerDealer.OrderComputer(price, type);
+            computerDealer.OrderComputer(type);
         }
     }
 }
