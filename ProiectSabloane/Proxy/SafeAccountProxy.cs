@@ -1,4 +1,5 @@
 ﻿using ProiectSabloane.Factory;
+using ProiectSabloane.Flyweight;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -47,12 +48,39 @@ namespace ProiectSabloane.Proxy
                 Console.WriteLine("Inactive");
         }
 
-        public void OrderComputer(int type)
+        public void OrderComputer(int type, Cashier cash)
         {
             if (this.RealSubject != null)
-                RealSubject.OrderComputer(type);
+                RealSubject.OrderComputer(type, cash);
             else
                 Console.WriteLine("Inactive");
+        }
+
+        public void DisplayCash()
+        {
+            if (this.RealSubject != null)
+                RealSubject.DisplayCash();
+            else
+                Console.WriteLine("Inactive");
+        }
+
+        public void CashIn(int money, EMoneyType type)
+        {
+            if (this.RealSubject != null)
+                RealSubject.CashIn(money, type);
+            else
+                Console.WriteLine("Inactive");
+        }
+
+        public Cashier GetCashVar()
+        {
+            if (this.RealSubject != null)
+                return RealSubject.GetCashVar();
+            else
+            {
+                Console.WriteLine("Inactive");
+                return null;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProiectSabloane.Flyweight;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,12 @@ namespace ProiectSabloane.Proxy
     {
         void DisplayStock();
 
-        void OrderComputer(int type);
+        void OrderComputer(int type, Cashier cash);
+
+        void DisplayCash();
+
+        void CashIn(int money, EMoneyType type);
+
+        Cashier GetCashVar();
     }
 }

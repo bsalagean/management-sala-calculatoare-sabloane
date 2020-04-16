@@ -41,17 +41,19 @@ namespace ProiectSabloane.Flyweight
             money.TotalCashValue += value;
         }
 
-        public void CashOut(double value)
+        public bool CashOut(double value)
         {
             var money = Lookup(value);
             if (money.TotalCashValue - value >= 0)
             {
-
-
                 money.TotalCashValue -= value;
+                return true;
             }
             else
-                Console.WriteLine("Not enough money");
+            {
+                Console.WriteLine("You do not have enough money!");
+                return false;
+            }
         }
 
         public double GetTotalCash()
