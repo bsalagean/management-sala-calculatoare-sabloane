@@ -11,8 +11,7 @@ namespace ProiectSabloane
             var admin = new SafeAccountProxy();
             while (true)
             {
-                Console.WriteLine("1.Admin");
-                Console.WriteLine("2.User");
+                Console.WriteLine("1.Admin \n2.User");
                 string option = Console.ReadLine();
                 switch (option)
                 {
@@ -30,8 +29,9 @@ namespace ProiectSabloane
                                 Console.WriteLine("1. Activate");
                                 Console.WriteLine("2. Order computers");
                                 Console.WriteLine("3. Display stock");
-                                Console.WriteLine("4. Display cash in register");
+                                Console.WriteLine("4. Displa.y cash in register");
                                 Console.WriteLine("5. Add cash");
+                                Console.WriteLine("6. Set computer occ");
                                 string optionAdmin = Console.ReadLine();
                                 switch (optionAdmin)
                                 {
@@ -89,6 +89,12 @@ namespace ProiectSabloane
                                         int money = Convert.ToInt32(Console.ReadLine());
                                         admin.CashIn(money, eMoneyType);
                                         break;
+                                    case "6":
+                                        admin.DisplayStock();
+                                        Console.WriteLine("Select computer id to change the state.");
+                                        int opt = Convert.ToInt32(Console.ReadLine());
+                                        admin.SetComputerFree(opt);
+                                        break;
                                     default:
                                         break;
                                 }
@@ -99,18 +105,28 @@ namespace ProiectSabloane
                         break;
                     case "2":
                         Console.WriteLine("Welcome user");
-                        while (true)
+                        User user = new User();
+                        Console.WriteLine("Enter username.");
+                        user.Name = Console.ReadLine();
+                        bool usr = true;
+                        do
                         {
+                            Console.WriteLine("1.Display computers. \n2.Exit.");
                             string optionUser = Console.ReadLine();
                             switch (optionUser)
                             {
                                 case "1":
-                                    Console.WriteLine("Case 1");
+                                    user.ViewComputers();
+                                    Console.WriteLine("Enter the computer id you want.");
+                                    int opt = Convert.ToInt32(Console.ReadLine());
+                                    user.ChooseComputer(opt);
                                     break;
-                                default:
+                                case "2":
+                                    usr = false;
                                     break;
                             }
-                        }
+                        } while (usr);
+                        break;
                     default:
                         break;
                 }

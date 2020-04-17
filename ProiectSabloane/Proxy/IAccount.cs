@@ -16,5 +16,7 @@ namespace ProiectSabloane.Proxy
         void CashIn(int money, EMoneyType type);
 
         Cashier GetCashVar();
+
+        bool SetComputerFree(int id);
     }
 }

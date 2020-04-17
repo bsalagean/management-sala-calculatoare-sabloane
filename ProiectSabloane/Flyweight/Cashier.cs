@@ -16,7 +16,7 @@ namespace ProiectSabloane.Flyweight
             _coinMoney = new CashRegisterCoin();
             _paperMoney = new CashRegisterPaper();
             _cardMoney = new CashRegisterCard();
-            this.CashIn(1000, EMoneyType.Card);
+            this.CashIn(10000, EMoneyType.Card);
             this.CashIn(0.5, EMoneyType.Coin);
             this.CashIn(100, EMoneyType.Paper);
         }

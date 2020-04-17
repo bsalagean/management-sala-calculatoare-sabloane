@@ -2,16 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ProiectSabloane.State;
 
 namespace ProiectSabloane.Factory
 {
     public abstract class Computer
     {
+        public State.State computerState;
+        public string Name { get; set; }
         public Computer(int id, int price, string brand)
         {
             this.Id = id;
             this.Price = price;
             this.Brand = brand;
+
+            computerState = new FreeState(this);
+            this.Name = null;
         }
 
         public int Id { get; set; }
@@ -31,5 +37,18 @@ namespace ProiectSabloane.Factory
         public EComputerType ComputerType { get; set; }
 
         public bool Availability { get; set; }
+
+        public void SetComputerState(EStateType state)
+        {
+            switch(state)
+            {
+                case EStateType.Free:
+                    this.computerState = new FreeState(this);
+                    return;
+                case EStateType.Occupied:
+                    this.computerState = new OccupiedState(this);
+                    return;
+            }
+        }
     }
 }

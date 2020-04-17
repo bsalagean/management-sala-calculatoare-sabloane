@@ -11,6 +11,11 @@ namespace ProiectSabloane.Factory
         public ComputerDealer()
         {
             OrderedComputers = new Dictionary<int, Computer>();
+            OrderedComputers.Add(AbstractComputerFactory.AsusComputerFactory.Id, new AbstractComputerFactory.AsusComputerFactory().GetDesktop(1500));
+            OrderedComputers.Add(AbstractComputerFactory.HPComputerFactory.Id, new AbstractComputerFactory.HPComputerFactory().GetLaptop(2000));
+            OrderedComputers.Add(AbstractComputerFactory.LenovoComputerFactory.Id, new AbstractComputerFactory.LenovoComputerFactory().GetDesktop(1500));
+            OrderedComputers.Add(AbstractComputerFactory.MacComputerFactory.Id, new AbstractComputerFactory.MacComputerFactory().GetLaptop(5000));
+
         }
 
         public Dictionary<int, Computer> OrderedComputers { get; set; }
@@ -80,7 +85,7 @@ namespace ProiectSabloane.Factory
         {
             foreach (var computer in OrderedComputers)
             {
-                Console.WriteLine("Stock From Order:" + computer.Value.Id + " " + computer.Value.Brand + " " + computer.Value.Price + " " + computer.Value.Type.ToString());
+                Console.WriteLine("Stock From Order:" + computer.Value.Id + " " + computer.Value.Brand + " " + computer.Value.Price + " " + "state: " + computer.Value.computerState.ToString() + " Used by: " + computer.Value.Name + " " + computer.Value.Type.ToString());
             }
         }
 

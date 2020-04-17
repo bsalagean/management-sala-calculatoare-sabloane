@@ -82,5 +82,16 @@ namespace ProiectSabloane.Proxy
                 return null;
             }
         }
+
+        public bool SetComputerFree(int id)
+        {
+            if (this.RealSubject != null)
+                return RealSubject.SetComputerFree(id);
+            else
+            {
+                Console.WriteLine("Inactive");
+                return false;
+            }
+        }
     }
 }
