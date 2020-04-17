@@ -8,10 +8,12 @@ namespace ProiectSabloane
     public class ManageComputer
     {
         public static ComputerDealer computerDealer { get; set; }
+        public static Computer computer;
 
         static ManageComputer()
         {
             computerDealer = new ComputerDealer();
+            
         }
     }
 }

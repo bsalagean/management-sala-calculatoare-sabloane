@@ -9,19 +9,18 @@ namespace ProiectSabloane.Proxy
 {
     public class AccountProtected : IAccount
     {
-        public ComputerDealer computerDealer = new ComputerDealer();
-        public ManageComputer manageComputer = new ManageComputer();
+       // public ComputerDealer computerDealer = new ComputerDealer();
         public Cashier cashier = new Cashier();
-        protected Computer comp;
+        //protected Computer comp;
 
         public void DisplayStock()
         {
-           computerDealer.StockComputer();
+           ManageComputer.computerDealer.StockComputer();
         }
 
         public void OrderComputer(int type, Cashier cash)
         {
-            computerDealer.OrderComputer(type, cash);
+            ManageComputer.computerDealer.OrderComputer(type, cash);
         }
 
         public void DisplayCash()
@@ -41,11 +40,11 @@ namespace ProiectSabloane.Proxy
 
         public bool SetComputerFree(int id)
         {
-            if (computerDealer.OrderedComputers.TryGetValue(id, out comp))
+            if (ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer))
             {
-                computerDealer.OrderedComputers.TryGetValue(id, out comp);
-                comp.SetComputerState(EStateType.Free);
-                comp.Name = null;
+                ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer);
+                ManageComputer.computer.SetComputerState(EStateType.Free);
+                ManageComputer.computer.Name = null;
                 return true;
             }
             return false;
