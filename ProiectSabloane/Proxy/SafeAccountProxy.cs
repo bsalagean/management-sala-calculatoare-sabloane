@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ProiectSabloane.Proxy
 {
-    class SafeAccountProxy : IAccount
+    public class SafeAccountProxy : IAccount
     {
         public string Username { get; set; }
 
@@ -91,6 +91,16 @@ namespace ProiectSabloane.Proxy
             {
                 Console.WriteLine("Inactive");
                 return false;
+            }
+        }
+
+        public void Send(string message, User reciver, ChatRoom chatRoom)
+        {
+            if (this.RealSubject != null)
+                RealSubject.Send(message, reciver, chatRoom);
+            else
+            {
+                Console.WriteLine("Inactive");
             }
         }
     }

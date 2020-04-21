@@ -1,4 +1,5 @@
 ﻿using ProiectSabloane.Factory;
+using ProiectSabloane.Proxy;
 using ProiectSabloane.State;
 using System;
 using System.Collections.Generic;
@@ -6,13 +7,11 @@ using System.Text;
 
 namespace ProiectSabloane
 {
-    public class User
+    public class User : IUser
     {
         public string Name { get; set; }
 
-        //protected Computer comp;
-
-       // public ComputerDealer computerDealer = new ComputerDealer();
+        public List<string> messageList { get; set; }
 
         public void ViewComputers()
         {
@@ -29,6 +28,23 @@ namespace ProiectSabloane
                 return true;
             }
             return false;
+        }
+
+        public IChatRoom Chatroom { get; set; }
+
+        public User()
+        {
+            this.messageList = new List<String>();
+        }
+
+        public User(IChatRoom Chatroom)
+        {
+            this.Chatroom = Chatroom;
+        }
+
+        public void Recive(string message)
+        {
+            Console.WriteLine($"Admin ai trimis urmatorul mesaj: {message} !");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ProiectSabloane.Flyweight;
 using ProiectSabloane.Proxy;
 using System;
+using System.Collections.Generic;
 
 namespace ProiectSabloane
 {
@@ -9,9 +10,11 @@ namespace ProiectSabloane
         static void Main(string[] args)
         {
             var admin = new SafeAccountProxy();
+            List<User> userList = new List<User>();
+            ChatRoom chatRoom = new ChatRoom("nume");
             while (true)
             {
-                Console.WriteLine("1.Admin \n2.User");
+                Console.WriteLine("1.Admin \n2.User \n3.Existing user");
                 string option = Console.ReadLine();
                 switch (option)
                 {
@@ -24,14 +27,17 @@ namespace ProiectSabloane
                         if (password == admin.Password && username == admin.Username)
                         {
                             Console.WriteLine("Welcome Admin");
-                            while (true)
+                            bool usr = true;
+                            do
                             {
                                 Console.WriteLine("1. Activate");
                                 Console.WriteLine("2. Order computers");
                                 Console.WriteLine("3. Display stock");
-                                Console.WriteLine("4. Displa.y cash in register");
+                                Console.WriteLine("4. Display cash in register");
                                 Console.WriteLine("5. Add cash");
-                                Console.WriteLine("6. Set computer occ");
+                                Console.WriteLine("6. Set computer free");
+                                Console.WriteLine("7. Chatrooms");
+                                Console.WriteLine("8. Exit");
                                 string optionAdmin = Console.ReadLine();
                                 switch (optionAdmin)
                                 {
@@ -58,7 +64,7 @@ namespace ProiectSabloane
                                         Console.WriteLine("5. Back");
                                         admin.DisplayCash();
                                         int orderComputerChoice = Convert.ToInt32(Console.ReadLine());
-                                        if(orderComputerChoice==5)
+                                        if (orderComputerChoice == 5)
                                             break;
                                         admin.OrderComputer(orderComputerChoice, admin.GetCashVar());
 
@@ -73,7 +79,7 @@ namespace ProiectSabloane
                                         Console.WriteLine("Choose type:\n1.Card\n2.Paper\n3.Coins");
                                         string type = Console.ReadLine();
                                         EMoneyType eMoneyType = new EMoneyType();
-                                        switch(type)
+                                        switch (type)
                                         {
                                             case "1":
                                                 eMoneyType = EMoneyType.Card;
@@ -95,10 +101,27 @@ namespace ProiectSabloane
                                         int opt = Convert.ToInt32(Console.ReadLine());
                                         admin.SetComputerFree(opt);
                                         break;
+                                    case "7":
+                                        chatRoom.DisplayUsers();
+                                        Console.WriteLine($"{chatRoom.Name}");
+                                        Console.WriteLine("Choose client");
+                                        int selectedUserId = Convert.ToInt32(Console.ReadLine());
+                                        User selectedUser = new User();
+                                        if (userList.Find(x => userList.IndexOf(x) == selectedUserId) != null)
+                                        {
+                                            selectedUser = userList.Find(x => userList.IndexOf(x) == selectedUserId);
+                                            Console.WriteLine("Message...");
+                                            string message = Console.ReadLine();
+                                            admin.Send(message, selectedUser, chatRoom);
+                                        }
+                                        break;
+                                    case "8":
+                                        usr = false;
+                                        break;
                                     default:
                                         break;
                                 }
-                            }
+                            } while (usr);
                         }
                         else
                             Console.WriteLine("Credentials unavailable");
@@ -108,24 +131,47 @@ namespace ProiectSabloane
                         User user = new User();
                         Console.WriteLine("Enter username.");
                         user.Name = Console.ReadLine();
-                        bool usr = true;
-                        do
+                        userList.Add(user);
+                        break;
+                    case "3":
+                        userList.ForEach(element =>
                         {
-                            Console.WriteLine("1.Display computers. \n2.Exit.");
-                            string optionUser = Console.ReadLine();
-                            switch (optionUser)
+                            Console.WriteLine($"Id: {userList.IndexOf(element)}, Name: {element.Name}");
+                        });
+                        Console.WriteLine("Type your id");
+                        int userId = Convert.ToInt32(Console.ReadLine());
+                        if(userList.Find(x => userList.IndexOf(x) == userId) != null)
+                        {
+                            User connectedUser = userList.Find(x => userList.IndexOf(x) == userId);
+                            bool usr = true;
+                            do
                             {
-                                case "1":
-                                    user.ViewComputers();
-                                    Console.WriteLine("Enter the computer id you want.");
-                                    int opt = Convert.ToInt32(Console.ReadLine());
-                                    user.ChooseComputer(opt);
-                                    break;
-                                case "2":
-                                    usr = false;
-                                    break;
-                            }
-                        } while (usr);
+                                Console.WriteLine("1.Display computers. \n2.Notifications \n3.Exit ");
+                                string optionUser = Console.ReadLine();
+                                switch (optionUser)
+                                {
+                                    case "1":
+                                        connectedUser.ViewComputers();
+                                        Console.WriteLine("Enter the computer id you want.");
+                                        int opt = Convert.ToInt32(Console.ReadLine());
+                                        connectedUser.ChooseComputer(opt);
+                                        chatRoom.Register(connectedUser);
+                                        break;
+                                    case "2":
+                                        foreach (var item in connectedUser.messageList)
+                                        {
+                                            Console.WriteLine(item);
+                                        }
+                                        break;
+                                    case "3":
+                                        usr = false;
+                                        break;
+                                }
+                            } while (usr);
+                        }
+                        else {
+                            Console.WriteLine("Incearca din nou");
+                        }
                         break;
                     default:
                         break;

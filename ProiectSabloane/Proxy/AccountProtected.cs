@@ -9,9 +9,9 @@ namespace ProiectSabloane.Proxy
 {
     public class AccountProtected : IAccount
     {
-       // public ComputerDealer computerDealer = new ComputerDealer();
         public Cashier cashier = new Cashier();
-        //protected Computer comp;
+
+        public IChatRoom Chatroom { get; set; }
 
         public void DisplayStock()
         {
@@ -48,6 +48,16 @@ namespace ProiectSabloane.Proxy
                 return true;
             }
             return false;
+        }
+
+        public void Send(string message, User reciver, ChatRoom chatRoom)
+        {
+            chatRoom.Send(message, this, reciver);
+        }
+
+        public void Recive(IUser user, string message)
+        {
+            Console.WriteLine($"{user.Name}: {message} (mesaj de la admin)");
         }
     }
 }

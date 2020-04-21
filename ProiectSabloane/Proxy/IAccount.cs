@@ -18,5 +18,7 @@ namespace ProiectSabloane.Proxy
         Cashier GetCashVar();
 
         bool SetComputerFree(int id);
+
+        void Send(string message, User reciver, ChatRoom chatRoom);
     }
 }
