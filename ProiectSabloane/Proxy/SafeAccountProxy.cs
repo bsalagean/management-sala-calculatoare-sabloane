@@ -103,5 +103,15 @@ namespace ProiectSabloane.Proxy
                 Console.WriteLine("Inactive");
             }
         }
+
+        public void Summary()
+        {
+            if (this.RealSubject != null)
+                RealSubject.Summary();
+            else
+            {
+                Console.WriteLine("Inactive");
+            }
+        }
     }
 }

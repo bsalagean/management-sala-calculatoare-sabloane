@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProiectSabloane
 {
-    public class User : IUser
+    public class User : IUser, Element
     {
         public string Name { get; set; }
 
@@ -45,6 +45,11 @@ namespace ProiectSabloane
         public void Recive(string message)
         {
             Console.WriteLine($"Admin ai trimis urmatorul mesaj: {message} !");
+        }
+
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

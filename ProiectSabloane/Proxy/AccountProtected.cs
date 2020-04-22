@@ -59,6 +59,11 @@ namespace ProiectSabloane.Proxy
         {
             Console.WriteLine($"{user.Name}: {message} (mesaj de la admin)");
         }
+
+        public void Summary()
+        {
+            ManageComputer.summary.Display();
+        }
     }
 }
 

@@ -37,7 +37,8 @@ namespace ProiectSabloane
                                 Console.WriteLine("5. Add cash");
                                 Console.WriteLine("6. Set computer free");
                                 Console.WriteLine("7. Chatrooms");
-                                Console.WriteLine("8. Exit");
+                                Console.WriteLine("8. Summary");
+                                Console.WriteLine("9. Exit");
                                 string optionAdmin = Console.ReadLine();
                                 switch (optionAdmin)
                                 {
@@ -116,6 +117,9 @@ namespace ProiectSabloane
                                         }
                                         break;
                                     case "8":
+                                        admin.Summary();
+                                        break;
+                                    case "9":
                                         usr = false;
                                         break;
                                     default:
@@ -156,6 +160,7 @@ namespace ProiectSabloane
                                         int opt = Convert.ToInt32(Console.ReadLine());
                                         connectedUser.ChooseComputer(opt);
                                         chatRoom.Register(connectedUser);
+                                        connectedUser.Accept(ManageComputer.summary);
                                         break;
                                     case "2":
                                         foreach (var item in connectedUser.messageList)

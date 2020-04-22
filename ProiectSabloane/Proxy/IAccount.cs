@@ -20,5 +20,7 @@ namespace ProiectSabloane.Proxy
         bool SetComputerFree(int id);
 
         void Send(string message, User reciver, ChatRoom chatRoom);
+
+        void Summary();
     }
 }
