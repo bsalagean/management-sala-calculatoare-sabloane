@@ -9,7 +9,7 @@ namespace ProiectSabloane.Proxy
 {
     public class AccountProtected : IAccount
     {
-        public Cashier cashier = new Cashier();
+       
 
         public IChatRoom Chatroom { get; set; }
 
@@ -25,17 +25,17 @@ namespace ProiectSabloane.Proxy
 
         public void DisplayCash()
         {
-            cashier.GetTotalCash();
+            ManageComputer.cashier.GetTotalCash();
         }
 
         public void CashIn(int money, EMoneyType type)
         {
-            cashier.CashIn(money, type);
+            ManageComputer.cashier.CashIn(money, type);
         }
 
         public Cashier GetCashVar()
         {
-            return cashier;
+            return ManageComputer.cashier;
         }
 
         public bool SetComputerFree(int id)
@@ -45,6 +45,7 @@ namespace ProiectSabloane.Proxy
                 ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer);
                 ManageComputer.computer.SetComputerState(EStateType.Free);
                 ManageComputer.computer.Name = null;
+                ManageComputer.computer.Hours = 0;
                 return true;
             }
             return false;
@@ -57,7 +58,7 @@ namespace ProiectSabloane.Proxy
 
         public void Recive(IUser user, string message)
         {
-            Console.WriteLine($"{user.Name}: {message} (mesaj de la admin)");
+            Console.WriteLine($"{user.Name}: {message} (message from admin)");
         }
 
         public void Summary()

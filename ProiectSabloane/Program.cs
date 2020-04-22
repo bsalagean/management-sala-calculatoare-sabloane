@@ -144,7 +144,7 @@ namespace ProiectSabloane
                         });
                         Console.WriteLine("Type your id");
                         int userId = Convert.ToInt32(Console.ReadLine());
-                        if(userList.Find(x => userList.IndexOf(x) == userId) != null)
+                        if (userList.Find(x => userList.IndexOf(x) == userId) != null)
                         {
                             User connectedUser = userList.Find(x => userList.IndexOf(x) == userId);
                             bool usr = true;
@@ -158,9 +158,16 @@ namespace ProiectSabloane
                                         connectedUser.ViewComputers();
                                         Console.WriteLine("Enter the computer id you want.");
                                         int opt = Convert.ToInt32(Console.ReadLine());
-                                        connectedUser.ChooseComputer(opt);
-                                        chatRoom.Register(connectedUser);
-                                        connectedUser.Accept(ManageComputer.summary);
+                                        Console.WriteLine("For how many hours would you like the computer(min. 1H, max. 10H).");
+                                        int optHours = Convert.ToInt32(Console.ReadLine());
+                                        if (optHours > 1 && optHours < 10)
+                                        {
+                                            connectedUser.ChooseComputer(opt, optHours);
+                                            chatRoom.Register(connectedUser);
+                                            connectedUser.Accept(ManageComputer.summary);
+                                            
+                                        }else
+                                            Console.WriteLine("The number of hours introduced is invalid");
                                         break;
                                     case "2":
                                         foreach (var item in connectedUser.messageList)
@@ -174,7 +181,8 @@ namespace ProiectSabloane
                                 }
                             } while (usr);
                         }
-                        else {
+                        else
+                        {
                             Console.WriteLine("Incearca din nou");
                         }
                         break;

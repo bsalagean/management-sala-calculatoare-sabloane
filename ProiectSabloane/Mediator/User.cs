@@ -18,13 +18,16 @@ namespace ProiectSabloane
             ManageComputer.computerDealer.StockComputer();
         }
 
-        public bool ChooseComputer(int id)
+        public bool ChooseComputer(int id, int hours)
         {
             if (ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer))
             {
                 ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer);
                 ManageComputer.computer.SetComputerState(EStateType.Occupied);
                 ManageComputer.computer.Name = Name;
+                ManageComputer.computer.Hours = hours;
+                ManageComputer.cashier.CashIn(10 * hours, Flyweight.EMoneyType.Card);
+                ManageComputer.computer.Accept(ManageComputer.summary);
                 return true;
             }
             return false;

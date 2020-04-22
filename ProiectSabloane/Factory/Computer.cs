@@ -6,10 +6,13 @@ using ProiectSabloane.State;
 
 namespace ProiectSabloane.Factory
 {
-    public abstract class Computer
+    public abstract class Computer : Element
     {
         public State.State computerState;
         public string Name { get; set; }
+
+        public int Hours { get; set; }
+
         public Computer(int id, int price, string brand)
         {
             this.Id = id;
@@ -18,6 +21,8 @@ namespace ProiectSabloane.Factory
 
             computerState = new FreeState(this);
             this.Name = null;
+
+            Hours = 0;
         }
 
         public int Id { get; set; }
@@ -49,6 +54,11 @@ namespace ProiectSabloane.Factory
                     this.computerState = new OccupiedState(this);
                     return;
             }
+        }
+
+        public void Accept(IVisitor visitor)
+        {
+            visitor.VisitTotalDayliHours(this);
         }
     }
 }
