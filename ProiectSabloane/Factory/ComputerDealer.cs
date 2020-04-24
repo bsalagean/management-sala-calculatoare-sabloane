@@ -85,9 +85,13 @@ namespace ProiectSabloane.Factory
         {
             foreach (var computer in OrderedComputers)
             {
-                Console.WriteLine("Stock From Order:" + computer.Value.Id + " " + computer.Value.Brand + " " + 
-                    computer.Value.Price + " " + "state: " + computer.Value.computerState.ToString() + " Used by: " 
-                    + computer.Value.Name + "Hours occupied : "+ computer.Value.Hours + " " + computer.Value.Type.ToString());
+                Console.WriteLine( "ID: " + computer.Value.Id + " | " + 
+                    computer.Value.Brand + " | " + 
+                    computer.Value.Price + " | " + 
+                    "state: " + computer.Value.computerState.ToString() + " | " + 
+                    "Used by: " + computer.Value.Name + " | " +
+                    "Hours occupied : "+ computer.Value.Hours + " | " + computer.Value.Type.ToString() +
+                    "\n--------------------------------------------------------------------------------");
             }
         }
 

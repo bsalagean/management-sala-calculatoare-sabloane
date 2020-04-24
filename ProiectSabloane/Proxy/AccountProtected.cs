@@ -28,9 +28,9 @@ namespace ProiectSabloane.Proxy
             ManageComputer.cashier.GetTotalCash();
         }
 
-        public void CashIn(int money, EMoneyType type)
+        public void CashIn(int money)
         {
-            ManageComputer.cashier.CashIn(money, type);
+            ManageComputer.cashier.CashIn(money);
         }
 
         public Cashier GetCashVar()

@@ -29,13 +29,13 @@ namespace ProiectSabloane.Proxy
             {
                 Password = newPass;
                 this.RealSubject = new AccountProtected();
-                Console.WriteLine("Activated");
+                Console.WriteLine("     Activated !\n");
                 isActivated = true;
                 return true;
             }
             else
             {
-                Console.WriteLine("Cannot use the same password as before ");
+                Console.WriteLine("     Cannot use the same password as before !\n");
                 return false;
             }
         }
@@ -64,10 +64,10 @@ namespace ProiectSabloane.Proxy
                 Console.WriteLine("Inactive");
         }
 
-        public void CashIn(int money, EMoneyType type)
+        public void CashIn(int money)
         {
             if (this.RealSubject != null)
-                RealSubject.CashIn(money, type);
+                RealSubject.CashIn(money);
             else
                 Console.WriteLine("Inactive");
         }

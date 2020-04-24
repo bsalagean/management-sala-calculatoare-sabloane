@@ -1,5 +1,4 @@
-﻿using ProiectSabloane.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using ProiectSabloane.State;
@@ -18,10 +17,8 @@ namespace ProiectSabloane.Factory
             this.Id = id;
             this.Price = price;
             this.Brand = brand;
-
             computerState = new FreeState(this);
             this.Name = null;
-
             Hours = 0;
         }
 
@@ -31,11 +28,7 @@ namespace ProiectSabloane.Factory
 
         public string Brand { get; set; }
 
-        public EUsedFor UsedFor { get; set; }
-
         public string Description { get; set; }
-
-        public List<EPeripherals> Peripherals { get; set; }
 
         public abstract EComputerType Type { get; }
 

@@ -19,7 +19,6 @@ namespace ProiectSabloane
             computerDealer = new ComputerDealer();
             summary = new Summary();
             cashier = new Cashier();
-            
         }
     }
 }

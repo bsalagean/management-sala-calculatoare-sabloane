@@ -13,7 +13,7 @@ namespace ProiectSabloane.Proxy
 
         void DisplayCash();
 
-        void CashIn(int money, EMoneyType type);
+        void CashIn(int money);
 
         Cashier GetCashVar();
 

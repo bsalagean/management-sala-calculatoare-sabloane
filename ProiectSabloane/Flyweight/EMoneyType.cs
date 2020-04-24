@@ -6,7 +6,6 @@ namespace ProiectSabloane.Flyweight
 {
     public enum EMoneyType
     {
-        Coin,
         Paper,
         Card
     }

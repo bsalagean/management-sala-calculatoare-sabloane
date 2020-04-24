@@ -22,13 +22,21 @@ namespace ProiectSabloane
         {
             if (ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer))
             {
-                ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer);
-                ManageComputer.computer.SetComputerState(EStateType.Occupied);
-                ManageComputer.computer.Name = Name;
-                ManageComputer.computer.Hours = hours;
-                ManageComputer.cashier.CashIn(10 * hours, Flyweight.EMoneyType.Card);
-                ManageComputer.computer.Accept(ManageComputer.summary);
-                return true;
+                if(ManageComputer.computer.Name == null)
+                {
+                    ManageComputer.computerDealer.OrderedComputers.TryGetValue(id, out ManageComputer.computer);
+                    ManageComputer.computer.SetComputerState(EStateType.Occupied);
+                    ManageComputer.computer.Name = Name;
+                    ManageComputer.computer.Hours = hours;
+                    ManageComputer.cashier.CashIn(10 * hours);
+                    ManageComputer.computer.Accept(ManageComputer.summary);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Computer is not free !");
+                    return false;
+                }
             }
             return false;
         }
